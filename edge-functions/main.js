@@ -9,14 +9,14 @@ export async function handleHttpRequest(request, context) {
   }
 
   // Otherwise, re-issue the request to the origin (self), bypassing the edge function on re-entry
-  const resp = await fetch(request.url, {
+  const resp = await fetch(request, {
     headers: {
       'x-ef-bypass': 'true', // this header tells the Edgio CDN to bypass the edge function
     },
     edgio: {
       origin: 'self',
     },
-  })
+  });
 
   // handle the response as needed
   // For example, to inject some html into the body:

@@ -3,7 +3,7 @@
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
 module.exports = {
   // The name of the site in Edgio to which this app should be deployed.
-  name: "ef-redirect",
+  name: 'ef-redirect',
 
   // The name of the organization in Edgio to which this app should be deployed.
   // organization: 'my-organization-name',
@@ -14,22 +14,22 @@ module.exports = {
   origins: [
     {
       // The name of the backend origin
-      name: "origin",
+      name: 'origin',
 
       // Use the following to override the host header sent from the browser when connecting to the origin
-      override_host_header: "test-origin.edgio.net",
+      override_host_header: 'test-origin.edgio.net',
 
       // The list of origin hosts to which to connect
       hosts: [
         {
           // The domain name or IP address of the origin server
-          location: "test-origin.edgio.net",
+          location: 'test-origin.edgio.net',
         },
       ],
 
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: "test-origin.edgio.net",
+        sni_hint_and_strict_san_check: 'test-origin.edgio.net',
       },
 
       // Uncomment the following to configure a shield
@@ -39,10 +39,13 @@ module.exports = {
       name: 'self',
       hosts: [
         {
-          location: 'localhost:3000',
+          location: 'tristan-lee-ef-redirect-default.edgio.link',
         },
       ],
-    }
+      tls_verify: {
+        allow_self_signed_certs: true,
+      },
+    },
   ],
 
   // Uncomment the following to specify environment specific configs
